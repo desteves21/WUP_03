@@ -19,11 +19,58 @@ davisdata <- read.csv(file="UCDavis.csv")
 
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
-The dat came from UCDavis in the year...
+The data came from UCDavis in the year...
 
 $H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.
 
 $H_A$: The average number drinks is different between at least two rows.  
+
+# Methods 
+
+In the data set davisdata Seat is a categorical variable, alcohol is numerical
+
+We try to predict alcohol ~ Seat so we use the Numerical~ cat helper file
+# Results
+
+
+## descriptive results
+
+### Graphical Summary
+
+```{r}
+basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
+```
+Now add in boxplot
+
+```{r}
+basicCN + geom_boxplot()
+```
+This boxplot shows ...
+
+### Numerical Summary
+
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+
+The numerical summary shows that ...
+
+### Inferential Results
+
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+the p-value is 0.000116, so we reject the null hypothesis
+There is difference in alcohol consumption on hwere people sit
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+
+# conclusion
 
 ## Now with ggplot - first select the basic data
 
