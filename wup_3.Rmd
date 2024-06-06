@@ -45,7 +45,7 @@ Now add in boxplot
 ```{r}
 basicCN + geom_boxplot()
 ```
-This boxplot shows ...
+This boxplot shows the back seat has the most variation in alcohol levels, while the front seat has the least.
 
 ### Numerical Summary
 
