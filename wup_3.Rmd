@@ -19,7 +19,7 @@ davisdata <- read.csv(file="UCDavis.csv")
 
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
-The data came from UCDavis in the year...
+The data came from UCDavis in the year 2015.
 
 $H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.
 
@@ -45,6 +45,7 @@ Now add in boxplot
 ```{r}
 basicCN + geom_boxplot()
 ```
+
 This boxplot shows the back seat has the most variation in alcohol levels, while the front seat has the least.
 
 ### Numerical Summary
@@ -53,7 +54,13 @@ This boxplot shows the back seat has the most variation in alcohol levels, while
 favstats(alcohol~Seat,data=ucdavis1)
 ```
 
-The numerical summary shows that ...
+The numerical summary shows
+
+In the back seat, alcohol levels range from 0 to 55, with a typical value around 3.5 and an average of 8.56.
+
+In the front seat, alcohol levels range from 0 to 20, with most values around 0 and an average of 1.79.
+
+In the middle seat, alcohol levels range from 0 to 35, with a typical value around 1 and an average of 3.33.
 
 ### Inferential Results
 
@@ -63,7 +70,7 @@ summary.aov(model1)
 ```
 
 the p-value is 0.000116, so we reject the null hypothesis
-There is difference in alcohol consumption on hwere people sit
+There is difference in alcohol consumption on where people sit
 
 ```{r}
 plot(TukeyHSD(model1))
@@ -71,6 +78,9 @@ plot(TukeyHSD(model1))
 
 
 # conclusion
+The seats in the back have a higher average of people consuming alcohol than those in the front or middle seats. The turkey plot shows that the chances of the seat positions have a low probability of the alcohol levels between the different seat positions.
+
+The seats in the back have a higher average of people consuming alcohol than those in the front or middle seats. Since the p-value is 0.000116, less than 0.005 so we reject the null hypothesis. The turkey plot shows that there is a difference in alcohol consumption based on where people sit.
 
 ## Now with ggplot - first select the basic data
 
